@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using ReceptenApi.Data;
 
 namespace ReceptenApi
 {
@@ -16,7 +18,8 @@ namespace ReceptenApi
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            builder.Services.AddDbContext<ReceptenDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            // dependency injection
 
             var app = builder.Build();
 
